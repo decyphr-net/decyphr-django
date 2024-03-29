@@ -6,7 +6,9 @@ from .models import Translation
 
 class Deserializer(DRFSerializer):
     text_to_be_translated = CharField(required=True)
-    language_code = CharField(required=True)
+    target_language_code = CharField(required=True)
+    source_language_code = CharField(required=True)
+    translator = CharField(required=True)
 
 
 class Serializer(ModelSerializer):

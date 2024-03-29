@@ -1,16 +1,12 @@
 # type: ignore
 from typing import Self, Type
 
-from django.conf import settings
-
 from translate.exceptions import TranslationValidationException
 from translate.serializers import Deserializer, Serializer
-from translate.translators.deepl import DeeplTranslator
-from translate.translators.protocol import TranslatorProtocol
+from translate.translators import get_translator
 
 
 class TranslationManager:
-    translator: TranslatorProtocol
     deserializer: Type[Deserializer]
     serializer: Type[Serializer]
 
@@ -19,13 +15,14 @@ class TranslationManager:
         deserializer: Type[Deserializer],
         serializer: Type[Serializer],
     ) -> None:
-        self.translator = DeeplTranslator(settings.DEEPL_API_KEY)
         self.deserializer = deserializer
         self.serializer = serializer
 
     def _translate(self: Self, data: dict) -> str:
-        return self.translator.translate(
-            data["text_to_be_translated"], data["language_code"]
+        return get_translator(data["translator"]).get_translated_text(
+            data["text_to_be_translated"],
+            data["target_language_code"],
+            data["source_language_code"],
         )
 
     def create_new_translation(self: Self, request_data: dict) -> Serializer:

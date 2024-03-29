@@ -14,11 +14,15 @@ class DeeplTranslator(TranslatorProtocol):
     """
 
     api_key: str
-    translator: Translator
+    secret_key: str | None
 
-    def __init__(self: Self, api_key: str) -> None:
+    def __init__(self: Self, api_key: str, secret_key: str | None = None) -> None:
         self.api_key = api_key
-        self.translator = Translator(self.api_key)
 
     def translate(self: Self, text: str, target_lang: str) -> str:
-        return self.translator.translate_text(text, target_lang=target_lang).text
+        return Translator(self.api_key).translate_text(text, target_lang=target_lang)
+
+    def get_translated_text(
+        self: Self, text: str, target_lang: str, source_lang: str | None = None
+    ) -> str:
+        return self.translate(text, target_lang=target_lang).text
