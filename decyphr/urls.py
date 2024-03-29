@@ -17,7 +17,15 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
+from rest_framework.routers import DefaultRouter
+
+from translate.views import TranslationViewSet
+
+router = DefaultRouter()
+router.register(r"translate", TranslationViewSet, basename="translate")
 
 urlpatterns = [
     path("admin/", admin.site.urls),
 ]
+
+urlpatterns += router.urls
