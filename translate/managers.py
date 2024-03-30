@@ -82,6 +82,8 @@ class TranslationManager:
             data={
                 "source_text": deserializer.data["text_to_be_translated"],
                 "translated_text": result,
+                "source_language": source_language.id,
+                "target_language": target_language.id,
             }
         )
 
