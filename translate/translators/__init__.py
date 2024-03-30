@@ -2,6 +2,7 @@ from django.conf import settings
 
 from translate.translators.amazon import AmazonTranslator
 from translate.translators.deepl import DeeplTranslator
+from translate.translators.google import GoogleTranslator
 from translate.translators.protocol import TranslatorProtocol
 
 translators = {
@@ -9,6 +10,7 @@ translators = {
         settings.AWS_SECRET_KEY_ID, settings.AWS_SECRET_ACCESS_KEY, settings.AWS_REGION
     ),
     "deepl": DeeplTranslator(settings.DEEPL_API_KEY, None),
+    "google": GoogleTranslator(),
 }
 
 

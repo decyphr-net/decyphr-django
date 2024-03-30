@@ -1,4 +1,4 @@
-from typing import Self
+from typing import Any, Self
 
 from boto3 import client
 
@@ -17,7 +17,7 @@ class AmazonTranslator:
 
     def translate(
         self: Self, text: str, target_lang: str, source_lang: str | None = None
-    ) -> str:
+    ) -> Any:
         translate = client(
             "translate",
             region_name=self.region,

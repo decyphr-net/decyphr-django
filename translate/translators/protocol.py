@@ -1,4 +1,5 @@
-from typing import Protocol, Self
+# type: ignore
+from typing import Any, Protocol, Self
 
 
 class TranslatorProtocol(Protocol):
@@ -7,7 +8,7 @@ class TranslatorProtocol(Protocol):
 
     def translate(
         self: Self, text: str, target_lang: str, source_lang: str | None = None
-    ) -> str:  # type: ignore
+    ) -> Any:
         """Translate
 
         Translate the given text using to the target language
@@ -20,7 +21,6 @@ class TranslatorProtocol(Protocol):
         Returns:
             The data returned from the API
         """
-        ...
 
     def get_translated_text(
         self: Self, text: str, target_lang: str, source_lang: str | None = None
@@ -38,4 +38,3 @@ class TranslatorProtocol(Protocol):
         Returns:
             str: The translated text
         """
-        ...
