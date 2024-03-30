@@ -3,10 +3,8 @@ from typing import Self
 
 from deepl import Translator
 
-from .protocol import TranslatorProtocol
 
-
-class DeeplTranslator(TranslatorProtocol):
+class DeeplTranslator:
     """Deepl Translator
 
     The wrapper for the Deepl Translation API for all comminucations with the Deepl

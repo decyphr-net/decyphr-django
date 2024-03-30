@@ -2,10 +2,8 @@ from typing import Self
 
 from boto3 import client
 
-from translate.translators.protocol import TranslatorProtocol
 
-
-class AmazonTranslator(TranslatorProtocol):
+class AmazonTranslator:
     api_key: str
     secret_key: str | None
     region: str
