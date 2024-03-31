@@ -60,3 +60,10 @@ skip-magic-trailing-comma = false
 
 # Like Black, automatically detect the appropriate line ending.
 line-ending = "auto"
+
+[tool.pyright]
+reportAttributeAccessIssue = false
+reportArgumentType = false
+reportCallIssue = false
+reportReturnType = false
+reportOptionalMemberAccess = false
