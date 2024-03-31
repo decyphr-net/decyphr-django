@@ -1,4 +1,3 @@
-# type: ignore
 from typing import Self, Type
 
 from languages.models import Language
