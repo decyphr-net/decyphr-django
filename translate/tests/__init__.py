@@ -1,3 +1,3 @@
-from translate.tests.views import TranslationViewSetAPITestCase
+from translate.tests.managers import TanslationManagerTestCase
 
-__all__ = [TranslationViewSetAPITestCase]
+__all__ = [TanslationManagerTestCase]
