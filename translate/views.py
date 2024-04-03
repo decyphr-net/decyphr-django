@@ -70,8 +70,12 @@ class TranslationViewSet(ModelViewSet):
         Args:
             request.data (dict[str, str]):
                 text_to_be_translated (str): The text to be translated
-                language_code (str): The ISO representation of the language to translate
-                    the text to
+                source_language_code (str): The ISO representation of the language of
+                    text to translate
+                target_language_code (str): The ISO representation of the language to
+                    translate the text to
+                translator (str): The name of the translator to use to translate the
+                    text
 
         Returns:
             Response: 201 if the request completes successfully

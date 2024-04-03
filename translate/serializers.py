@@ -1,7 +1,7 @@
 from rest_framework.serializers import CharField, ModelSerializer
 from rest_framework.serializers import Serializer as DRFSerializer
 
-from .models import Translation
+from translate.models import Translation
 
 
 class Deserializer(DRFSerializer):

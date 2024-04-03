@@ -1,3 +1,4 @@
+# type: ignore
 from typing import Self, Type
 
 from languages.models import Language
@@ -71,16 +72,17 @@ class TranslationManager:
             deserializer.data["target_language_code"]
         )
 
-        result = self._translate(
+        translated_text = self._translate(
             text_to_be_translated=deserializer.data["text_to_be_translated"],
             source_language=source_language,
             target_language=target_language,
             translator=deserializer.data["translator"],
         )
+
         translation = self.serializer(
             data={
                 "source_text": deserializer.data["text_to_be_translated"],
-                "translated_text": result,
+                "translated_text": translated_text,
                 "source_language": source_language.id,
                 "target_language": target_language.id,
             }
