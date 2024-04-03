@@ -19,10 +19,12 @@ from django.contrib import admin
 from django.urls import path
 from rest_framework.routers import DefaultRouter
 
+from nlp.views import NLPViewSet
 from translate.views import TranslationViewSet
 
 router = DefaultRouter()
 router.register(r"translate", TranslationViewSet, basename="translate")
+router.register(r"nlp", NLPViewSet, basename="nlp")
 
 urlpatterns = [
     path("admin/", admin.site.urls),
