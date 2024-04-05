@@ -22,6 +22,7 @@ from drf_yasg.views import get_schema_view
 from rest_framework.permissions import AllowAny
 from rest_framework.routers import DefaultRouter
 
+from languages.views import LanguageViewSet
 from nlp.views import NLPViewSet
 from translate.views import TranslationViewSet
 
@@ -37,6 +38,7 @@ schema_view = get_schema_view(
 router = DefaultRouter()
 router.register(r"translate", TranslationViewSet, basename="translate")
 router.register(r"nlp", NLPViewSet, basename="nlp")
+router.register(r"languages", LanguageViewSet, basename="languages")
 
 urlpatterns = [
     path("admin/", admin.site.urls),
