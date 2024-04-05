@@ -27,10 +27,14 @@ class GoogleNLP:
             )
         )
 
-    def parse_response(self: Self, response: dict[str, str]) -> list[TextPiece]:
+    def parse_response(
+        self: Self, response: dict[str, str], language: Language
+    ) -> list[TextPiece]:
         return [
             TextPiece(
-                text_item=token.text.content, pos_tag=token.part_of_speech.tag.name
+                text_item=token.text.content,
+                pos_tag=token.part_of_speech.tag.name,
+                language=language,
             )
             for token in response.tokens
         ]
@@ -39,5 +43,6 @@ class GoogleNLP:
         return self.parse_response(
             self.initialise_client().analyze_syntax(
                 document=Document(content=text, type_=Document.Type.PLAIN_TEXT)
-            )
+            ),
+            language,
         )

@@ -18,9 +18,15 @@ class AmazonNLP:
         self.secret_key = aws_secret_access_key
         self.region = aws_region
 
-    def parse_text(self: Self, response: dict[str, Any]) -> list[TextPiece]:
+    def parse_text(
+        self: Self, response: dict[str, Any], language: Language
+    ) -> list[TextPiece]:
         return [
-            TextPiece(text_item=item["Text"], pos_tag=item["PartOfSpeech"]["Tag"])
+            TextPiece(
+                text_item=item["Text"],
+                pos_tag=item["PartOfSpeech"]["Tag"],
+                language=language,
+            )
             for item in response["SyntaxTokens"]
         ]
 
@@ -32,5 +38,6 @@ class AmazonNLP:
             aws_secret_access_key=self.secret_key,
         )
         return self.parse_text(
-            comprehend.detect_syntax(Text=text, LanguageCode=language.short_code)
+            comprehend.detect_syntax(Text=text, LanguageCode=language.short_code),
+            language,
         )

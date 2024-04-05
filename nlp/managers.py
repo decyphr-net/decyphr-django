@@ -40,6 +40,7 @@ class NLPManager:
             text_piece = TextPieceModel(
                 text=processed_text_piece.text_item,
                 pos_tag=processed_text_piece.pos_tag,
+                language=processed_text_piece.language,
             )
             text_piece.save()
             text_pieces.append(text_piece)

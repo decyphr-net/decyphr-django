@@ -9,6 +9,7 @@ from preferences.models import Preferences
 class TextPiece:
     text_item: str
     pos_tag: str
+    language: Language
 
 
 @dataclass(init=False)
