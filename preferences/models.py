@@ -4,7 +4,7 @@ from languages.models import Language
 
 SUPPORTED_TRANSLATORS = (
     ("amazon", "Amazon"),
-    ("deelp", "Deepl"),
+    ("deepl", "Deepl"),
     ("google", "Goolge"),
 )
 
