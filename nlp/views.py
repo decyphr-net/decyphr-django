@@ -72,6 +72,7 @@ class NLPViewSet(ModelViewSet):
             request.data (dict[str, str]):
                 text_to_be_processed (str): The text to be processed
                 language_code (str): The ISO representation of the language of the text
+                processor (str): The name of the processor to be used
 
         Returns:
             Response: 201 if the request completes successfully
