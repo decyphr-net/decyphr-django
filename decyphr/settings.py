@@ -47,14 +47,17 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "drf_yasg",
+    "corsheaders",
     "translate",
     "languages",
     "nlp",
+    "preferences",
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -135,7 +138,6 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-
 DEEPL_API_KEY = env("DEEPL_API_KEY")
 
 AWS_REGION = env("AWS_REGION")
@@ -144,3 +146,8 @@ AWS_SECRET_ACCESS_KEY = env("AWS_SECRET_ACCESS_KEY")
 
 GOOGLE_CLOUD_CRED_FILE_NAME = env("GOOGLE_CLOUD_CRED_FILE_NAME")
 GOOGLE_CLOUD_SCOPES = [env("GOOGLE_CLOUD_SCOPES")]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+]
