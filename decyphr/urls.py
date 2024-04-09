@@ -24,6 +24,7 @@ from rest_framework.routers import DefaultRouter
 
 from languages.views import LanguageViewSet
 from nlp.views import NLPViewSet
+from preferences.views import PreferencesViewSet
 from translate.views import TranslationViewSet
 
 schema_view = get_schema_view(
@@ -39,6 +40,7 @@ router = DefaultRouter()
 router.register(r"translate", TranslationViewSet, basename="translate")
 router.register(r"nlp", NLPViewSet, basename="nlp")
 router.register(r"languages", LanguageViewSet, basename="languages")
+router.register(r"preferences", PreferencesViewSet, basename="preferences")
 
 urlpatterns = [
     path("admin/", admin.site.urls),
